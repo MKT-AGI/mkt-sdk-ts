@@ -17,6 +17,17 @@ jobs:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
       - run: npm ci && npm run build 2>/dev/null || true
+      - name: Determine version
+        run: |
+          LATEST=$(git tag --sort=-v:refname 2>/dev/null | grep -E '^v[0-9]' | head -1)
+          if [ -z "$LATEST" ]; then
+            VERSION="0.0.1"
+          else
+            PATCH=$(echo "$LATEST" | grep -oP '\d+\.\d+\.\K\d+')
+            VERSION="0.0.$((PATCH + 1))"
+          fi
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+      - run: npm version $VERSION --no-git-tag-version
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
