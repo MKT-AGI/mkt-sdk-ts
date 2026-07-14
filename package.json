@@ -1,6 +1,6 @@
 {
-  "name": "mkt-sdk-ts",
-  "version": "0.0.2",
+  "name": "@mktagi/mkt-sdk-ts",
+  "version": "0.0.0",
   "description": "TypeScript SDK for aix API",
   "main": "./index.js",
   "types": "./index.d.ts",
