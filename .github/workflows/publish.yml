@@ -1,0 +1,34 @@
+name: Publish
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm ci && npm run build 2>/dev/null || true
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Tag and Release
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          git tag "v${VERSION}" 2>/dev/null || echo "Tag exists"
+          git push --tags
+          if [ -f CHANGELOG.md ]; then
+            gh release create "v${VERSION}" --title "v${VERSION}" --notes-file CHANGELOG.md
+          else
+            gh release create "v${VERSION}" --title "v${VERSION}" --generate-notes
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
