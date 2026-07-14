@@ -5,7 +5,7 @@ TypeScript SDK for the aix API, auto-generated from the OpenAPI spec via [Fern](
 ## Install
 
 ```bash
-npm install @mkt/sdk-ts
+npm install @mktagi/mkt-sdk-ts
 ```
 
 ## Usage
