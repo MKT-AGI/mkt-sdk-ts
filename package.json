@@ -1,0 +1,21 @@
+{
+  "name": "mkt-sdk-ts",
+  "version": "0.0.2",
+  "description": "TypeScript SDK for aix API",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "files": [
+    "**/*.js",
+    "**/*.d.ts"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^7.0.2"
+  }
+}
