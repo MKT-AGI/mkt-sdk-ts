@@ -1,0 +1,7 @@
+/**
+ * Target user ID for session switching.
+ */
+export interface InternalAccountsInternalWebSwitchUserReq {
+    /** UserID is the target user ID to switch to (must be session owner or a direct sub-user). */
+    user_id: number;
+}

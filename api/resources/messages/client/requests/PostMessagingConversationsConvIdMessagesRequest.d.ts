@@ -1,0 +1,15 @@
+import type * as MktAgiApi from "../../../../index.js";
+/**
+ * @example
+ *     {
+ *         conv_id: 1,
+ *         body: {
+ *             "key": "value"
+ *         }
+ *     }
+ */
+export interface PostMessagingConversationsConvIdMessagesRequest {
+    /** Conversation ID */
+    conv_id: number;
+    body: MktAgiApi.PostMessagingConversationsConvIdMessagesRequestBody;
+}

@@ -1,0 +1,9 @@
+import type * as MktAgiApi from "../index.js";
+/**
+ * Confirmation code for account deletion.
+ */
+export interface InternalAccountsInternalWebDeletionConfirmReq {
+    /** Code is the 6-digit verification code sent to the user's bound contact method. */
+    code: string;
+    preferences?: MktAgiApi.GithubComMktAgiAixInternalAccountsInternalDomainUserPreferences | undefined;
+}

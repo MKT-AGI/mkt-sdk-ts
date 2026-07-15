@@ -1,0 +1,11 @@
+import type * as MktAgiApi from "../index.js";
+/**
+ * Email and verification code for login/registration.
+ */
+export interface InternalAccountsInternalWebEmailVerifyRequest {
+    /** Code is the verification code received via email. */
+    code: string;
+    /** Email is the email address to verify. */
+    email: string;
+    preferences?: MktAgiApi.GithubComMktAgiAixInternalAccountsInternalDomainUserPreferences | undefined;
+}

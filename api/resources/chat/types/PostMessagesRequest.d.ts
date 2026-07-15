@@ -1,0 +1,5 @@
+import type * as MktAgiApi from "../../../index.js";
+export type PostMessagesRequest = Record<string, unknown>
+/**
+ * Anthropic Messages parameters */
+ | MktAgiApi.AnthropicMessageRequest;

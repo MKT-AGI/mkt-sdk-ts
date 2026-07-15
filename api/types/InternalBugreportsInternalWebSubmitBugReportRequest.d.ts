@@ -1,0 +1,9 @@
+import type * as MktAgiApi from "../index.js";
+export interface InternalBugreportsInternalWebSubmitBugReportRequest {
+    description?: string | undefined;
+    element?: MktAgiApi.GithubComMktAgiAixInternalBugreportsInternalDomainElementData | undefined;
+    timestamp?: number | undefined;
+    title?: string | undefined;
+    url?: string | undefined;
+    viewport?: MktAgiApi.GithubComMktAgiAixInternalBugreportsInternalDomainViewportData | undefined;
+}

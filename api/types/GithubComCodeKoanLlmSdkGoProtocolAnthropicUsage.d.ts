@@ -1,0 +1,8 @@
+import type * as MktAgiApi from "../index.js";
+export interface GithubComCodeKoanLlmSdkGoProtocolAnthropicUsage {
+    cache_creation?: MktAgiApi.GithubComCodeKoanLlmSdkGoProtocolAnthropicCacheCreation | undefined;
+    cache_creation_input_tokens?: number | undefined;
+    cache_read_input_tokens?: number | undefined;
+    input_tokens?: number | undefined;
+    output_tokens?: number | undefined;
+}

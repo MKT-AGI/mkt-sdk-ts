@@ -1,0 +1,11 @@
+/**
+ * Presigned upload URL, storage key and public URL.
+ */
+export interface InternalAccountsInternalWebAvatarUploadUrlResponse {
+    /** Key is the storage key for the uploaded file. */
+    key?: string | undefined;
+    /** PublicURL is the public CDN URL of the avatar after upload. */
+    public_url?: string | undefined;
+    /** UploadURL is the presigned S3 URL for direct browser upload. */
+    upload_url?: string | undefined;
+}

@@ -1,0 +1,12 @@
+export interface GithubComMktAgiAixInternalMessagingInternalDomainMessage {
+    content?: string | undefined;
+    content_type?: string | undefined;
+    conv_id?: number | undefined;
+    created_at?: number | undefined;
+    id?: number | undefined;
+    mentioned_user_ids?: number[] | undefined;
+    metadata?: string | undefined;
+    reply_to_seq?: number | undefined;
+    sender_id?: number | undefined;
+    seq?: number | undefined;
+}

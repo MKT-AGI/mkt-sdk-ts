@@ -1,0 +1,6 @@
+export interface InternalCommentsInternalWebCreateCommentReq {
+    body: string;
+    parent_id?: number | undefined;
+    target_id: number;
+    target_type: string;
+}

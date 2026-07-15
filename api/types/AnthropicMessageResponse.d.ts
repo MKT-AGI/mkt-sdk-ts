@@ -1,0 +1,11 @@
+import type * as MktAgiApi from "../index.js";
+export interface AnthropicMessageResponse {
+    content?: MktAgiApi.AnthropicContentBlock[] | undefined;
+    id?: string | undefined;
+    model?: string | undefined;
+    role?: string | undefined;
+    stop_reason?: string | undefined;
+    stop_sequence?: string | undefined;
+    type?: string | undefined;
+    usage?: MktAgiApi.GithubComCodeKoanLlmSdkGoProtocolAnthropicUsage | undefined;
+}

@@ -1,0 +1,18 @@
+import type * as MktAgiApi from "../../../../index.js";
+/**
+ * @example
+ *     {
+ *         user_id: 1,
+ *         key: "key",
+ *         body: {
+ *             "key": "value"
+ *         }
+ *     }
+ */
+export interface PutSecretsUserIdKeyRequest {
+    /** User ID */
+    user_id: number;
+    /** Secret key */
+    key: string;
+    body: MktAgiApi.PutSecretsUserIdKeyRequestBody;
+}

@@ -1,0 +1,13 @@
+/**
+ * Response containing the newly created API key and metadata. The raw key is returned only once.
+ */
+export interface InternalIamInternalWebCreateApiKeyResponse {
+    /** APIKey is the raw API key value. Only returned once at creation time. */
+    api_key?: string | undefined;
+    /** ID is the unique database identifier for the API key. */
+    id?: number | undefined;
+    /** KeyPrefix is a short prefix for identifying the key in listings. */
+    key_prefix?: string | undefined;
+    /** Scopes lists the permission scopes assigned to this key. */
+    scopes?: string[] | undefined;
+}

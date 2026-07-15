@@ -1,0 +1,16 @@
+export interface InternalWisdomInternalWebLogResponse {
+    /** 操作类型 */
+    action?: string | undefined;
+    /** 创建时间 */
+    created_at?: number | undefined;
+    /** 详情 */
+    detail?: string | undefined;
+    /** 主键 */
+    id?: number | undefined;
+    /** 操作者 */
+    user_id?: number | undefined;
+    /** 操作者名 */
+    username?: string | undefined;
+    /** 内容节点 */
+    wisdom_id?: number | undefined;
+}

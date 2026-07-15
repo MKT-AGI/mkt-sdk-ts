@@ -1,0 +1,8 @@
+import type * as MktAgiApi from "../index.js";
+export interface InternalWisdomInternalWebWisdomWithContextResponse {
+    /** 入边 */
+    incoming?: MktAgiApi.InternalWisdomInternalWebRelationEdgeResponse[] | undefined;
+    /** 出边 */
+    outgoing?: MktAgiApi.InternalWisdomInternalWebRelationEdgeResponse[] | undefined;
+    wisdom?: MktAgiApi.InternalWisdomInternalWebWisdomResponse | undefined;
+}

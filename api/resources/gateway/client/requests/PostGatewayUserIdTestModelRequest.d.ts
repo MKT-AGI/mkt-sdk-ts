@@ -1,0 +1,15 @@
+import type * as MktAgiApi from "../../../../index.js";
+/**
+ * @example
+ *     {
+ *         user_id: 1,
+ *         body: {
+ *             "key": "value"
+ *         }
+ *     }
+ */
+export interface PostGatewayUserIdTestModelRequest {
+    /** User ID or username */
+    user_id: number;
+    body: MktAgiApi.PostGatewayUserIdTestModelRequestBody;
+}

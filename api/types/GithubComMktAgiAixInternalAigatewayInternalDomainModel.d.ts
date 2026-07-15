@@ -1,0 +1,24 @@
+import type * as MktAgiApi from "../index.js";
+export interface GithubComMktAgiAixInternalAigatewayInternalDomainModel {
+    billing_mode?: string | undefined;
+    cache_hit_price?: number | undefined;
+    capabilities?: MktAgiApi.GithubComMktAgiAixInternalAigatewayInternalDomainModelCapabilities | undefined;
+    created_at?: number | undefined;
+    currency?: string | undefined;
+    description?: string | undefined;
+    enabled?: boolean | undefined;
+    id?: number | undefined;
+    input_price?: number | undefined;
+    is_default?: boolean | undefined;
+    listed_at?: number | undefined;
+    max_output_tokens?: number | undefined;
+    name?: string | undefined;
+    output_price?: number | undefined;
+    provider_id?: number | undefined;
+    updated_at?: number | undefined;
+    upstream_name?: string | undefined;
+    user_id?: number | undefined;
+    /** "private" | "public" | "filter" */
+    visibility?: string | undefined;
+    wallet_id?: number | undefined;
+}

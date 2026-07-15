@@ -1,0 +1,15 @@
+import type * as MktAgiApi from "../../../../index.js";
+/**
+ * @example
+ *     {
+ *         key: "key",
+ *         body: {
+ *             "key": "value"
+ *         }
+ *     }
+ */
+export interface PutAdminSysConfigKeyRequest {
+    /** 配置键 */
+    key: string;
+    body: MktAgiApi.PutAdminSysConfigKeyRequestBody;
+}

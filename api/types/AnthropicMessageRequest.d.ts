@@ -1,0 +1,17 @@
+import type * as MktAgiApi from "../index.js";
+export interface AnthropicMessageRequest {
+    max_tokens?: number | undefined;
+    messages?: MktAgiApi.GithubComCodeKoanLlmSdkGoProtocolAnthropicMessage[] | undefined;
+    metadata?: MktAgiApi.AnthropicMetadata | undefined;
+    model?: string | undefined;
+    stop_sequences?: string[] | undefined;
+    stream?: boolean | undefined;
+    /** string | []TextBlock */
+    system?: unknown | undefined;
+    temperature?: number | undefined;
+    thinking?: MktAgiApi.AnthropicThinkingConfig | undefined;
+    tool_choice?: number[] | undefined;
+    tools?: MktAgiApi.AnthropicTool[] | undefined;
+    top_k?: number | undefined;
+    top_p?: number | undefined;
+}

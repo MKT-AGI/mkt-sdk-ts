@@ -16,7 +16,8 @@ jobs:
         with:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
-      - run: npm ci && npm run build 2>/dev/null || true
+      - run: npm ci
+      - run: npm run build
       - name: Determine version
         run: |
           LATEST=$(git tag --sort=-v:refname 2>/dev/null | grep -E '^v[0-9]' | head -1)

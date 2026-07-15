@@ -1,0 +1,5 @@
+import type * as MktAgiApi from "../../../index.js";
+export type PostAuthSmsSendRequest = Record<string, unknown>
+/**
+ * Phone number, optional captcha_token and captcha_code */
+ | MktAgiApi.InternalAccountsInternalWebSmsSendRequest;
