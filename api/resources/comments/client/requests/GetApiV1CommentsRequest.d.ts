@@ -1,0 +1,17 @@
+/**
+ * @example
+ *     {
+ *         target_type: "target_type",
+ *         target_id: 1
+ *     }
+ */
+export interface GetApiV1CommentsRequest {
+    /** Target type (article, etc.) */
+    target_type: string;
+    /** Target ID */
+    target_id: number;
+    /** Pagination cursor */
+    cursor?: number;
+    /** Page size (default 20, max 100) */
+    limit?: number;
+}

@@ -1,0 +1,16 @@
+/**
+ * @example
+ *     {
+ *         target_type: "target_type"
+ *     }
+ */
+export interface GetApiV1AdminCommentsRequest {
+    /** Target type (article, etc.) */
+    target_type: string;
+    /** Filter by status (pending, approved, rejected, hidden) */
+    status?: string;
+    /** Pagination cursor */
+    cursor?: number;
+    /** Page size (default 20, max 100) */
+    limit?: number;
+}

@@ -1,0 +1,23 @@
+/**
+ * Wallet response with string-formatted balance.
+ */
+export interface InternalPaymentsInternalWebWalletV2Response {
+    /** Balance is the current balance as a string (3 decimal places) to avoid precision loss. */
+    balance?: string | undefined;
+    /** CreatedAt is the creation Unix timestamp. */
+    created_at?: number | undefined;
+    /** Currency is the ISO currency code. */
+    currency?: string | undefined;
+    /** ID is the wallet's unique identifier. */
+    id?: number | undefined;
+    /** Kind is the wallet type identifier. */
+    kind?: string | undefined;
+    /** Name is the display name of the wallet. */
+    name?: string | undefined;
+    /** UpdatedAt is the last update Unix timestamp. */
+    updated_at?: number | undefined;
+    /** UserID is the owner's user ID. */
+    user_id?: number | undefined;
+    /** Version is the optimistic-lock version number. */
+    version?: number | undefined;
+}

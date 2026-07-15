@@ -1,0 +1,16 @@
+export interface InternalWisdomInternalWebRelationEdgeResponse {
+    /** 置信度 */
+    confidence?: string | undefined;
+    /** 主键 */
+    id?: number | undefined;
+    /** 承诺 */
+    promise?: string | undefined;
+    /** 关系类型 */
+    relation?: string | undefined;
+    /** 标题 */
+    title?: string | undefined;
+    /** 权重 */
+    weight?: number | undefined;
+    /** 内容节点 */
+    wisdom_id?: number | undefined;
+}

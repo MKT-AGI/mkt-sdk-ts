@@ -1,0 +1,12 @@
+/**
+ * @example
+ *     {}
+ */
+export interface GetApiV1NotificationsRequest {
+    /** Cursor ID for pagination */
+    cursor_id?: number;
+    /** Cursor created_at timestamp */
+    cursor_created_at?: number;
+    /** Page size (default 20, max 100) */
+    limit?: number;
+}

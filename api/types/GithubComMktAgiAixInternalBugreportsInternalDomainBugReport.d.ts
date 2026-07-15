@@ -1,0 +1,21 @@
+import type * as MktAgiApi from "../index.js";
+export interface GithubComMktAgiAixInternalBugreportsInternalDomainBugReport {
+    client_timestamp?: number | undefined;
+    created_at?: number | undefined;
+    description?: string | undefined;
+    domain_label?: string | undefined;
+    element?: MktAgiApi.GithubComMktAgiAixInternalBugreportsInternalDomainElementData | undefined;
+    github_issue_number?: number | undefined;
+    github_issue_url?: string | undefined;
+    id?: number | undefined;
+    reporter_id?: number | undefined;
+    /** populated via service-layer JOIN */
+    reporter_name?: string | undefined;
+    review_notes?: string | undefined;
+    reviewer_id?: number | undefined;
+    status?: string | undefined;
+    title?: string | undefined;
+    updated_at?: number | undefined;
+    url?: string | undefined;
+    viewport?: MktAgiApi.GithubComMktAgiAixInternalBugreportsInternalDomainViewportData | undefined;
+}

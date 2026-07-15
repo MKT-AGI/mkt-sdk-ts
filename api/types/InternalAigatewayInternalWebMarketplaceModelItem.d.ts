@@ -1,0 +1,11 @@
+export interface InternalAigatewayInternalWebMarketplaceModelItem {
+    currency?: string | undefined;
+    description?: string | undefined;
+    id?: number | undefined;
+    input_price?: number | undefined;
+    listed_at?: number | undefined;
+    name?: string | undefined;
+    output_price?: number | undefined;
+    owner_name?: string | undefined;
+    total_calls?: number | undefined;
+}

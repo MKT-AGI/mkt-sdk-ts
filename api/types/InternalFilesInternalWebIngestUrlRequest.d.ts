@@ -1,0 +1,12 @@
+export interface InternalFilesInternalWebIngestUrlRequest {
+    /** business context ID */
+    biz_id?: string | undefined;
+    /** target directory path, defaults to "/" */
+    dir_path?: string | undefined;
+    /** target filename */
+    filename: string;
+    /** source URL to download */
+    url: string;
+    /** "private" | "public" | "filter" */
+    visibility?: string | undefined;
+}

@@ -1,0 +1,40 @@
+export interface InternalWisdomInternalWebCommunityResponse {
+    /** 置信度 */
+    confidence?: number | undefined;
+    /** 创建时间 */
+    created_at?: number | undefined;
+    /** 防御 */
+    defencer?: string | undefined;
+    /** 描述 */
+    description?: string | undefined;
+    /** 主键 */
+    id?: number | undefined;
+    /** 指令 */
+    instructions?: string | undefined;
+    /** 标签 */
+    label?: string | undefined;
+    /** 成员数 */
+    member_count?: number | undefined;
+    /** 模块度 */
+    modularity?: number | undefined;
+    /** 承诺 */
+    promise?: string | undefined;
+    /** 扩展属性 */
+    props?: number[] | undefined;
+    /** 反思 */
+    reflector?: string | undefined;
+    /** 决议值 */
+    resolution?: number | undefined;
+    /** 标识 */
+    slug?: string | undefined;
+    /** 风格 */
+    style?: string | undefined;
+    /** 更新时间 */
+    updated_at?: number | undefined;
+    /** 所属用户 */
+    user_id?: number | undefined;
+    /** 可见性 */
+    visibility?: string | undefined;
+    /** 期望能力 */
+    want_capability?: string | undefined;
+}

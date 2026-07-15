@@ -1,0 +1,22 @@
+export interface InternalWisdomInternalWebUpdateCommunityRequest {
+    /** 防御 */
+    defencer?: string | undefined;
+    /** 描述 */
+    description?: string | undefined;
+    /** 指令 */
+    instructions?: string | undefined;
+    /** 标签 */
+    label?: string | undefined;
+    /** 承诺 */
+    promise?: string | undefined;
+    /** 扩展属性 */
+    props?: number[] | undefined;
+    /** 标识 */
+    slug?: string | undefined;
+    /** 风格 */
+    style?: string | undefined;
+    /** 可见性 */
+    visibility?: string | undefined;
+    /** 期望能力 */
+    want_capability?: string | undefined;
+}

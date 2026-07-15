@@ -1,0 +1,37 @@
+/**
+ * Balance transaction record with string-formatted amounts.
+ */
+export interface InternalPaymentsInternalWebBalanceTransactionV2Response {
+    /** Amount is the transaction amount as a string. */
+    amount?: string | undefined;
+    /** BalanceAfter is the wallet balance after this transaction. */
+    balance_after?: string | undefined;
+    /** BalanceBefore is the wallet balance before this transaction. */
+    balance_before?: string | undefined;
+    /** CreatedAt is the creation Unix timestamp. */
+    created_at?: number | undefined;
+    /** Currency is the ISO currency code. */
+    currency?: string | undefined;
+    /** Direction indicates whether this is a credit or debit. */
+    direction?: string | undefined;
+    /** ID is the transaction's unique identifier. */
+    id?: number | undefined;
+    /** IdempotencyKey uniquely identifies this transaction for idempotent processing. */
+    idempotency_key?: string | undefined;
+    /** Metadata is optional extra JSON data. */
+    metadata?: unknown | undefined;
+    /** Note is an optional human-readable note. */
+    note?: string | undefined;
+    /** ReferenceID is the identifier of the referenced entity. */
+    reference_id?: unknown | undefined;
+    /** ReferenceType is the type of the referenced entity. */
+    reference_type?: string | undefined;
+    /** TransactionNo is the unique transaction number. */
+    transaction_no?: string | undefined;
+    /** Type is the transaction type (e.g. "topup", "consume", "refund", "adjust"). */
+    type?: string | undefined;
+    /** UserID is the owner's user ID. */
+    user_id?: number | undefined;
+    /** WalletID is the wallet this transaction belongs to. */
+    wallet_id?: number | undefined;
+}

@@ -1,0 +1,10 @@
+import type * as MktAgiApi from "../index.js";
+export interface GithubComMktAgiAixInternalPkgGinxResultInternalAigatewayInternalWebTestModelResponse {
+    code?: number | undefined;
+    data?: MktAgiApi.InternalAigatewayInternalWebTestModelResponse | undefined;
+    limit?: number | undefined;
+    message?: string | undefined;
+    page?: number | undefined;
+    total?: number | undefined;
+    user_message?: string | undefined;
+}

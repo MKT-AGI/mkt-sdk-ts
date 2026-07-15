@@ -1,0 +1,7 @@
+import type * as MktAgiApi from "../index.js";
+export interface GithubComMktAgiAixInternalPaymentsInternalDomainMarketplaceFeeSummary {
+    by_resource_type?: MktAgiApi.GithubComMktAgiAixInternalPaymentsInternalDomainFeeResourceBreakdown[] | undefined;
+    by_seller?: MktAgiApi.GithubComMktAgiAixInternalPaymentsInternalDomainFeeSellerBreakdown[] | undefined;
+    period?: string | undefined;
+    total_fee?: number | undefined;
+}

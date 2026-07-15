@@ -1,0 +1,14 @@
+/**
+ * @example
+ *     {}
+ */
+export interface GetCommunityRequest {
+    /** username filter, required when slug is provided */
+    username?: string;
+    /** community slug, requires username */
+    slug?: string;
+    /** pagination offset, default 0 */
+    offset?: number;
+    /** pagination limit, default 20, max 100 */
+    limit?: number;
+}

@@ -1,0 +1,18 @@
+export interface InternalWisdomInternalWebRelationResponse {
+    /** 置信度 */
+    confidence?: string | undefined;
+    /** 创建时间 */
+    created_at?: number | undefined;
+    /** 主键 */
+    id?: number | undefined;
+    /** 扩展属性 */
+    props?: number[] | undefined;
+    /** 关系类型 */
+    relation?: string | undefined;
+    /** 源节点 */
+    source_id?: number | undefined;
+    /** 目标节点 */
+    target_id?: number | undefined;
+    /** 权重 */
+    weight?: number | undefined;
+}

@@ -1,0 +1,23 @@
+import type * as MktAgiApi from "../index.js";
+/**
+ * Authenticated user profile information (sensitive fields excluded).
+ */
+export interface InternalAccountsInternalWebUserResponse {
+    /** AvatarURL is the user's avatar image URL. */
+    avatar_url?: string | undefined;
+    /** Email is the user's verified email address (nil if not set). */
+    email?: string | undefined;
+    /** HasPassword indicates whether the user has set a password. */
+    has_password?: boolean | undefined;
+    /** ID is the user's unique identifier. */
+    id?: number | undefined;
+    /** Name is the user's display name. */
+    name?: string | undefined;
+    /** ParentUserID is the parent user's ID for sub-accounts (nil for primary accounts). */
+    parent_user_id?: number | undefined;
+    /** Phone is the user's verified phone number (nil if not set). */
+    phone?: string | undefined;
+    preferences?: MktAgiApi.GithubComMktAgiAixInternalAccountsInternalDomainUserPreferences | undefined;
+    /** Role is the user's role (e.g., "user", "admin", "sub_user"). */
+    role?: string | undefined;
+}

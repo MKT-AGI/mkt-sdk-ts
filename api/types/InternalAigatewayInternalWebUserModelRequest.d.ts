@@ -1,0 +1,30 @@
+export interface InternalAigatewayInternalWebUserModelRequest {
+    /** BillingMode is the billing mode: "token" (default) or "per_request". */
+    billing_mode?: string | undefined;
+    /** CacheHitPrice is the cache hit price per 1M tokens (CNY). 0 means same as input_price. */
+    cache_hit_price?: number | undefined;
+    /** Currency is the billing currency (CNY or USD, default CNY). */
+    currency?: string | undefined;
+    /** Description is an optional human-readable description. */
+    description?: string | undefined;
+    /** Enabled controls whether the model is active. */
+    enabled?: boolean | undefined;
+    /** InputPrice is the price per 1M input tokens (CNY). */
+    input_price?: number | undefined;
+    /** IsDefault indicates whether to set this as the user's default model. */
+    is_default?: boolean | undefined;
+    /** MaxOutputTokens is the maximum output token count (0=system default). */
+    max_output_tokens?: number | undefined;
+    /** Name is the user-facing model identifier. */
+    name: string;
+    /** OutputPrice is the price per 1M output tokens (CNY). */
+    output_price?: number | undefined;
+    /** ProviderID is the associated provider ID. */
+    provider_id: number;
+    /** UpstreamName is the upstream provider's model name (overrides Name if set). */
+    upstream_name?: string | undefined;
+    /** Visibility is the model visibility (private or public). */
+    visibility?: string | undefined;
+    /** WalletID is the optional bound wallet ID for receiving earnings. */
+    wallet_id?: number | undefined;
+}

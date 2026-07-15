@@ -1,0 +1,11 @@
+/**
+ * Request to create a new conversation with participants.
+ */
+export interface InternalMessagingInternalWebCreateConversationReq {
+    /** ParticipantIDs lists the initial participant user IDs to add. */
+    participant_ids?: number[] | undefined;
+    /** Title is the conversation display title. */
+    title?: string | undefined;
+    /** Type is the conversation type (e.g. "direct", "group"). */
+    type?: string | undefined;
+}

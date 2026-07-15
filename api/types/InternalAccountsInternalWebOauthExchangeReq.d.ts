@@ -1,0 +1,9 @@
+import type * as MktAgiApi from "../index.js";
+/**
+ * OAuth authorization code for token exchange. Shared by GitHub and Google OAuth flows.
+ */
+export interface InternalAccountsInternalWebOauthExchangeReq {
+    /** Code is the OAuth authorization code from the provider. */
+    code: string;
+    preferences?: MktAgiApi.GithubComMktAgiAixInternalAccountsInternalDomainUserPreferences | undefined;
+}
