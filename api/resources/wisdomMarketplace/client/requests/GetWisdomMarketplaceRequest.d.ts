@@ -1,0 +1,20 @@
+/**
+ * @example
+ *     {}
+ */
+export interface GetWisdomMarketplaceRequest {
+    /** Search by label */
+    search?: string;
+    /** Minimum price filter */
+    min_price?: number;
+    /** Maximum price filter */
+    max_price?: number;
+    /** Sort field: created_at, price, member_count */
+    sort?: string;
+    /** Sort order: asc, desc */
+    order?: string;
+    /** Page number, default 1 */
+    page?: number;
+    /** Page limit, default 20, max 100 */
+    limit?: number;
+}

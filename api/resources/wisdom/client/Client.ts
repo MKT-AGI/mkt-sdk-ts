@@ -836,6 +836,78 @@ export class WisdomClient {
     }
 
     /**
+     * List the current user's purchased community access grants
+     *
+     * @param {WisdomClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link MktAgiApi.UnauthorizedError}
+     * @throws {@link MktAgiApi.InternalServerError}
+     *
+     * @example
+     *     await client.wisdom.listPurchasedCommunities()
+     */
+    public listPurchasedCommunities(
+        requestOptions?: WisdomClient.RequestOptions,
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayInternalWisdomInternalWebPurchaseItemResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__listPurchasedCommunities(requestOptions));
+    }
+
+    private async __listPurchasedCommunities(
+        requestOptions?: WisdomClient.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayInternalWisdomInternalWebPurchaseItemResponse>
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MktAgiApiEnvironment.Default,
+                "wisdom/purchases",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayInternalWisdomInternalWebPurchaseItemResponse,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new MktAgiApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new MktAgiApi.InternalServerError(
+                        _response.error.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxCodeResp,
+                        _response.rawResponse,
+                    );
+                default:
+                    throw new errors.MktAgiApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/wisdom/purchases");
+    }
+
+    /**
      * Get the content subgraph for a specific community
      *
      * @param {MktAgiApi.GetWisdomSubgraphRequest} request

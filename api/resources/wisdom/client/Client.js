@@ -600,6 +600,58 @@ export class WisdomClient {
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/wisdom/cluster");
     }
     /**
+     * List the current user's purchased community access grants
+     *
+     * @param {WisdomClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link MktAgiApi.UnauthorizedError}
+     * @throws {@link MktAgiApi.InternalServerError}
+     *
+     * @example
+     *     await client.wisdom.listPurchasedCommunities()
+     */
+    listPurchasedCommunities(requestOptions) {
+        return core.HttpResponsePromise.fromPromise(this.__listPurchasedCommunities(requestOptions));
+    }
+    async __listPurchasedCommunities(requestOptions) {
+        const _authRequest = await this._options.authProvider.getAuthRequest();
+        const _headers = mergeHeaders(_authRequest.headers, this._options?.headers, requestOptions?.headers);
+        const _response = await core.fetcher({
+            url: core.url.join((await core.Supplier.get(this._options.baseUrl)) ??
+                (await core.Supplier.get(this._options.environment)) ??
+                environments.MktAgiApiEnvironment.Default, "wisdom/purchases"),
+            method: "GET",
+            headers: _headers,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body,
+                rawResponse: _response.rawResponse,
+            };
+        }
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new MktAgiApi.UnauthorizedError(_response.error.body, _response.rawResponse);
+                case 500:
+                    throw new MktAgiApi.InternalServerError(_response.error.body, _response.rawResponse);
+                default:
+                    throw new errors.MktAgiApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/wisdom/purchases");
+    }
+    /**
      * Get the content subgraph for a specific community
      *
      * @param {MktAgiApi.GetWisdomSubgraphRequest} request

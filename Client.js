@@ -30,6 +30,7 @@ import { WalletsClient } from "./api/resources/wallets/client/Client.js";
 import { WisdomClient } from "./api/resources/wisdom/client/Client.js";
 import { WisdomCommunityClient } from "./api/resources/wisdomCommunity/client/Client.js";
 import { WisdomCommunityPublicClient } from "./api/resources/wisdomCommunityPublic/client/Client.js";
+import { WisdomMarketplaceClient } from "./api/resources/wisdomMarketplace/client/Client.js";
 import { WisdomPublicClient } from "./api/resources/wisdomPublic/client/Client.js";
 import { normalizeClientOptionsWithAuth } from "./BaseClient.js";
 import { mergeHeaders } from "./core/headers.js";
@@ -71,6 +72,7 @@ export class MktAgiApiClient {
     _accounts;
     _wisdom;
     _wisdomCommunity;
+    _wisdomMarketplace;
     constructor(options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
@@ -166,6 +168,9 @@ export class MktAgiApiClient {
     }
     get wisdomCommunity() {
         return (this._wisdomCommunity ??= new WisdomCommunityClient(this._options));
+    }
+    get wisdomMarketplace() {
+        return (this._wisdomMarketplace ??= new WisdomMarketplaceClient(this._options));
     }
     /**
      * Create the first superadmin user. Only works when no admin exists.

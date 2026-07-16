@@ -79,5 +79,7 @@ export * as wisdomCommunity from "./wisdomCommunity/index.js";
 export * from "./wisdomCommunity/types/index.js";
 export * from "./wisdomCommunityPublic/client/requests/index.js";
 export * as wisdomCommunityPublic from "./wisdomCommunityPublic/index.js";
+export * from "./wisdomMarketplace/client/requests/index.js";
+export * as wisdomMarketplace from "./wisdomMarketplace/index.js";
 export * from "./wisdomPublic/client/requests/index.js";
 export * as wisdomPublic from "./wisdomPublic/index.js";

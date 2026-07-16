@@ -1,0 +1,6 @@
+export interface InternalWisdomInternalWebPurchaseItemResponse {
+    community_id?: number | undefined;
+    created_at?: number | undefined;
+    order_no?: string | undefined;
+    source?: string | undefined;
+}
