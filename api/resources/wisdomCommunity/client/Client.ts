@@ -454,4 +454,204 @@ export class WisdomCommunityClient {
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "PATCH", "/wisdom/community/{id}");
     }
+
+    /**
+     * Set the price, pricing model, and listing status for a community
+     *
+     * @param {MktAgiApi.PutWisdomCommunityIdPricingRequest} request
+     * @param {WisdomCommunityClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link MktAgiApi.BadRequestError}
+     * @throws {@link MktAgiApi.UnauthorizedError}
+     * @throws {@link MktAgiApi.ForbiddenError}
+     * @throws {@link MktAgiApi.UnprocessableEntityError}
+     * @throws {@link MktAgiApi.InternalServerError}
+     *
+     * @example
+     *     await client.wisdomCommunity.setCommunityPricing({
+     *         id: 1,
+     *         body: {
+     *             "key": "value"
+     *         }
+     *     })
+     */
+    public setCommunityPricing(
+        request: MktAgiApi.PutWisdomCommunityIdPricingRequest,
+        requestOptions?: WisdomCommunityClient.RequestOptions,
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultInternalWisdomInternalWebCommunityResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__setCommunityPricing(request, requestOptions));
+    }
+
+    private async __setCommunityPricing(
+        request: MktAgiApi.PutWisdomCommunityIdPricingRequest,
+        requestOptions?: WisdomCommunityClient.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultInternalWisdomInternalWebCommunityResponse>
+    > {
+        const { id, body: _body } = request;
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MktAgiApiEnvironment.Default,
+                `wisdom/community/${core.url.encodePathParam(id)}/pricing`,
+            ),
+            method: "PUT",
+            headers: _headers,
+            contentType: "application/json",
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultInternalWisdomInternalWebCommunityResponse,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new MktAgiApi.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                case 401:
+                    throw new MktAgiApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 403:
+                    throw new MktAgiApi.ForbiddenError(
+                        _response.error.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxCodeResp,
+                        _response.rawResponse,
+                    );
+                case 422:
+                    throw new MktAgiApi.UnprocessableEntityError(
+                        _response.error.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxCodeResp,
+                        _response.rawResponse,
+                    );
+                case 500:
+                    throw new MktAgiApi.InternalServerError(
+                        _response.error.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxCodeResp,
+                        _response.rawResponse,
+                    );
+                default:
+                    throw new errors.MktAgiApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "PUT",
+            "/wisdom/community/{id}/pricing",
+        );
+    }
+
+    /**
+     * Purchase access to a paid community
+     *
+     * @param {MktAgiApi.PostWisdomCommunityIdPurchaseRequest} request
+     * @param {WisdomCommunityClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link MktAgiApi.BadRequestError}
+     * @throws {@link MktAgiApi.UnauthorizedError}
+     * @throws {@link MktAgiApi.PaymentRequiredError}
+     * @throws {@link MktAgiApi.UnprocessableEntityError}
+     * @throws {@link MktAgiApi.InternalServerError}
+     *
+     * @example
+     *     await client.wisdomCommunity.purchaseCommunity({
+     *         id: 1
+     *     })
+     */
+    public purchaseCommunity(
+        request: MktAgiApi.PostWisdomCommunityIdPurchaseRequest,
+        requestOptions?: WisdomCommunityClient.RequestOptions,
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultMapStringString> {
+        return core.HttpResponsePromise.fromPromise(this.__purchaseCommunity(request, requestOptions));
+    }
+
+    private async __purchaseCommunity(
+        request: MktAgiApi.PostWisdomCommunityIdPurchaseRequest,
+        requestOptions?: WisdomCommunityClient.RequestOptions,
+    ): Promise<core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultMapStringString>> {
+        const { id } = request;
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.MktAgiApiEnvironment.Default,
+                `wisdom/community/${core.url.encodePathParam(id)}/purchase`,
+            ),
+            method: "POST",
+            headers: _headers,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultMapStringString,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new MktAgiApi.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                case 401:
+                    throw new MktAgiApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 402:
+                    throw new MktAgiApi.PaymentRequiredError(
+                        _response.error.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxCodeResp,
+                        _response.rawResponse,
+                    );
+                case 422:
+                    throw new MktAgiApi.UnprocessableEntityError(
+                        _response.error.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxCodeResp,
+                        _response.rawResponse,
+                    );
+                case 500:
+                    throw new MktAgiApi.InternalServerError(
+                        _response.error.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxCodeResp,
+                        _response.rawResponse,
+                    );
+                default:
+                    throw new errors.MktAgiApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/wisdom/community/{id}/purchase",
+        );
+    }
 }

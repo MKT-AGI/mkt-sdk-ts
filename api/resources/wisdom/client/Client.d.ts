@@ -176,6 +176,19 @@ export declare class WisdomClient {
     clusterContents(requestOptions?: WisdomClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultInternalWisdomInternalWebTriggerStatusVo>;
     private __clusterContents;
     /**
+     * List the current user's purchased community access grants
+     *
+     * @param {WisdomClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link MktAgiApi.UnauthorizedError}
+     * @throws {@link MktAgiApi.InternalServerError}
+     *
+     * @example
+     *     await client.wisdom.listPurchasedCommunities()
+     */
+    listPurchasedCommunities(requestOptions?: WisdomClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayInternalWisdomInternalWebPurchaseItemResponse>;
+    private __listPurchasedCommunities;
+    /**
      * Get the content subgraph for a specific community
      *
      * @param {MktAgiApi.GetWisdomSubgraphRequest} request

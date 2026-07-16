@@ -31,6 +31,7 @@ import { WalletsClient } from "./api/resources/wallets/client/Client.js";
 import { WisdomClient } from "./api/resources/wisdom/client/Client.js";
 import { WisdomCommunityClient } from "./api/resources/wisdomCommunity/client/Client.js";
 import { WisdomCommunityPublicClient } from "./api/resources/wisdomCommunityPublic/client/Client.js";
+import { WisdomMarketplaceClient } from "./api/resources/wisdomMarketplace/client/Client.js";
 import { WisdomPublicClient } from "./api/resources/wisdomPublic/client/Client.js";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient.js";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "./BaseClient.js";
@@ -80,6 +81,7 @@ export class MktAgiApiClient {
     protected _accounts: AccountsClient | undefined;
     protected _wisdom: WisdomClient | undefined;
     protected _wisdomCommunity: WisdomCommunityClient | undefined;
+    protected _wisdomMarketplace: WisdomMarketplaceClient | undefined;
 
     constructor(options: MktAgiApiClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
@@ -207,6 +209,10 @@ export class MktAgiApiClient {
 
     public get wisdomCommunity(): WisdomCommunityClient {
         return (this._wisdomCommunity ??= new WisdomCommunityClient(this._options));
+    }
+
+    public get wisdomMarketplace(): WisdomMarketplaceClient {
+        return (this._wisdomMarketplace ??= new WisdomMarketplaceClient(this._options));
     }
 
     /**

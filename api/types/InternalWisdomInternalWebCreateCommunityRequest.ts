@@ -9,6 +9,12 @@ export interface InternalWisdomInternalWebCreateCommunityRequest {
     instructions?: string | undefined;
     /** 标签 */
     label?: string | undefined;
+    /** 上架状态 */
+    listing_status?: string | undefined;
+    /** 价格 */
+    price?: number | undefined;
+    /** 定价模型 */
+    pricing_model?: string | undefined;
     /** 承诺 */
     promise?: string | undefined;
     /** 扩展属性 */

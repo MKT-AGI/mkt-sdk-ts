@@ -100,4 +100,45 @@ export declare class WisdomCommunityClient {
      */
     updateCommunity(request: MktAgiApi.PatchWisdomCommunityIdRequest, requestOptions?: WisdomCommunityClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultInternalWisdomInternalWebCommunityResponse>;
     private __updateCommunity;
+    /**
+     * Set the price, pricing model, and listing status for a community
+     *
+     * @param {MktAgiApi.PutWisdomCommunityIdPricingRequest} request
+     * @param {WisdomCommunityClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link MktAgiApi.BadRequestError}
+     * @throws {@link MktAgiApi.UnauthorizedError}
+     * @throws {@link MktAgiApi.ForbiddenError}
+     * @throws {@link MktAgiApi.UnprocessableEntityError}
+     * @throws {@link MktAgiApi.InternalServerError}
+     *
+     * @example
+     *     await client.wisdomCommunity.setCommunityPricing({
+     *         id: 1,
+     *         body: {
+     *             "key": "value"
+     *         }
+     *     })
+     */
+    setCommunityPricing(request: MktAgiApi.PutWisdomCommunityIdPricingRequest, requestOptions?: WisdomCommunityClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultInternalWisdomInternalWebCommunityResponse>;
+    private __setCommunityPricing;
+    /**
+     * Purchase access to a paid community
+     *
+     * @param {MktAgiApi.PostWisdomCommunityIdPurchaseRequest} request
+     * @param {WisdomCommunityClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link MktAgiApi.BadRequestError}
+     * @throws {@link MktAgiApi.UnauthorizedError}
+     * @throws {@link MktAgiApi.PaymentRequiredError}
+     * @throws {@link MktAgiApi.UnprocessableEntityError}
+     * @throws {@link MktAgiApi.InternalServerError}
+     *
+     * @example
+     *     await client.wisdomCommunity.purchaseCommunity({
+     *         id: 1
+     *     })
+     */
+    purchaseCommunity(request: MktAgiApi.PostWisdomCommunityIdPurchaseRequest, requestOptions?: WisdomCommunityClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultMapStringString>;
+    private __purchaseCommunity;
 }

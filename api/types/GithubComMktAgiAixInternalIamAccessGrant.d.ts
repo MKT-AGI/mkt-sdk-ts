@@ -3,6 +3,8 @@ export interface GithubComMktAgiAixInternalIamAccessGrant {
     createdBy?: number | undefined;
     expiresAt?: number | undefined;
     orderNo?: string | undefined;
+    resourceID?: number | undefined;
+    resourceType?: string | undefined;
     /** "grant" | "purchase" */
     source?: string | undefined;
     userID?: number | undefined;
