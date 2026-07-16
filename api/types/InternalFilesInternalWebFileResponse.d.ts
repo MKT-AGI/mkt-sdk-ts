@@ -19,6 +19,6 @@ export interface InternalFilesInternalWebFileResponse {
     updated_at?: number | undefined;
     /** Owner user ID */
     user_id?: number | undefined;
-    /** Visibility: private|public|filter */
+    /** Visibility constant (domain.VisibilityPrivate|Public) */
     visibility?: string | undefined;
 }

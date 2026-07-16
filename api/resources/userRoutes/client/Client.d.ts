@@ -83,9 +83,9 @@ export declare class UserRoutesClient {
     deleteUserModelRoute(request: MktAgiApi.DeleteGatewayUserIdRoutesIdRequest, requestOptions?: UserRoutesClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>;
     private __deleteUserModelRoute;
     /**
-     * Return all users who have filter access to a route
+     * Return all access grants for a route
      *
-     * @param {MktAgiApi.GetGatewayUserIdRoutesIdFiltersRequest} request
+     * @param {MktAgiApi.GetGatewayUserIdRoutesIdGrantsRequest} request
      * @param {UserRoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -94,17 +94,17 @@ export declare class UserRoutesClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userRoutes.listRouteVisibilityFilters({
+     *     await client.userRoutes.listRouteAccessGrants({
      *         user_id: 1,
      *         id: 1
      *     })
      */
-    listRouteVisibilityFilters(request: MktAgiApi.GetGatewayUserIdRoutesIdFiltersRequest, requestOptions?: UserRoutesClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint>;
-    private __listRouteVisibilityFilters;
+    listRouteAccessGrants(request: MktAgiApi.GetGatewayUserIdRoutesIdGrantsRequest, requestOptions?: UserRoutesClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamAccessGrant>;
+    private __listRouteAccessGrants;
     /**
-     * Grant a user access to a route via filter
+     * Grant a user access to a private route
      *
-     * @param {MktAgiApi.PostGatewayUserIdRoutesIdFiltersRequest} request
+     * @param {MktAgiApi.PostGatewayUserIdRoutesIdGrantsRequest} request
      * @param {UserRoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -113,7 +113,7 @@ export declare class UserRoutesClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userRoutes.addRouteVisibilityFilter({
+     *     await client.userRoutes.grantRouteAccess({
      *         user_id: 1,
      *         id: 1,
      *         body: {
@@ -121,12 +121,12 @@ export declare class UserRoutesClient {
      *         }
      *     })
      */
-    addRouteVisibilityFilter(request: MktAgiApi.PostGatewayUserIdRoutesIdFiltersRequest, requestOptions?: UserRoutesClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>;
-    private __addRouteVisibilityFilter;
+    grantRouteAccess(request: MktAgiApi.PostGatewayUserIdRoutesIdGrantsRequest, requestOptions?: UserRoutesClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>;
+    private __grantRouteAccess;
     /**
-     * Revoke a user's access to a filtered route
+     * Revoke a user's access to a route
      *
-     * @param {MktAgiApi.DeleteGatewayUserIdRoutesIdFiltersTargetUserIdRequest} request
+     * @param {MktAgiApi.DeleteGatewayUserIdRoutesIdGrantsTargetUserIdRequest} request
      * @param {UserRoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -135,12 +135,12 @@ export declare class UserRoutesClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userRoutes.removeRouteVisibilityFilter({
+     *     await client.userRoutes.revokeRouteAccess({
      *         user_id: 1,
      *         id: 1,
      *         target_user_id: 1
      *     })
      */
-    removeRouteVisibilityFilter(request: MktAgiApi.DeleteGatewayUserIdRoutesIdFiltersTargetUserIdRequest, requestOptions?: UserRoutesClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>;
-    private __removeRouteVisibilityFilter;
+    revokeRouteAccess(request: MktAgiApi.DeleteGatewayUserIdRoutesIdGrantsTargetUserIdRequest, requestOptions?: UserRoutesClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>;
+    private __revokeRouteAccess;
 }

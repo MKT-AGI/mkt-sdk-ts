@@ -335,9 +335,9 @@ export class UserRoutesClient {
     }
 
     /**
-     * Return all users who have filter access to a route
+     * Return all access grants for a route
      *
-     * @param {MktAgiApi.GetGatewayUserIdRoutesIdFiltersRequest} request
+     * @param {MktAgiApi.GetGatewayUserIdRoutesIdGrantsRequest} request
      * @param {UserRoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -346,22 +346,24 @@ export class UserRoutesClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userRoutes.listRouteVisibilityFilters({
+     *     await client.userRoutes.listRouteAccessGrants({
      *         user_id: 1,
      *         id: 1
      *     })
      */
-    public listRouteVisibilityFilters(
-        request: MktAgiApi.GetGatewayUserIdRoutesIdFiltersRequest,
+    public listRouteAccessGrants(
+        request: MktAgiApi.GetGatewayUserIdRoutesIdGrantsRequest,
         requestOptions?: UserRoutesClient.RequestOptions,
-    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint> {
-        return core.HttpResponsePromise.fromPromise(this.__listRouteVisibilityFilters(request, requestOptions));
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamAccessGrant> {
+        return core.HttpResponsePromise.fromPromise(this.__listRouteAccessGrants(request, requestOptions));
     }
 
-    private async __listRouteVisibilityFilters(
-        request: MktAgiApi.GetGatewayUserIdRoutesIdFiltersRequest,
+    private async __listRouteAccessGrants(
+        request: MktAgiApi.GetGatewayUserIdRoutesIdGrantsRequest,
         requestOptions?: UserRoutesClient.RequestOptions,
-    ): Promise<core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint>> {
+    ): Promise<
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamAccessGrant>
+    > {
         const { user_id: userId, id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -374,7 +376,7 @@ export class UserRoutesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.MktAgiApiEnvironment.Default,
-                `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/filters`,
+                `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/grants`,
             ),
             method: "GET",
             headers: _headers,
@@ -387,7 +389,7 @@ export class UserRoutesClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint,
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamAccessGrant,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -418,14 +420,14 @@ export class UserRoutesClient {
             _response.error,
             _response.rawResponse,
             "GET",
-            "/gateway/{user_id}/routes/{id}/filters",
+            "/gateway/{user_id}/routes/{id}/grants",
         );
     }
 
     /**
-     * Grant a user access to a route via filter
+     * Grant a user access to a private route
      *
-     * @param {MktAgiApi.PostGatewayUserIdRoutesIdFiltersRequest} request
+     * @param {MktAgiApi.PostGatewayUserIdRoutesIdGrantsRequest} request
      * @param {UserRoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -434,7 +436,7 @@ export class UserRoutesClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userRoutes.addRouteVisibilityFilter({
+     *     await client.userRoutes.grantRouteAccess({
      *         user_id: 1,
      *         id: 1,
      *         body: {
@@ -442,15 +444,15 @@ export class UserRoutesClient {
      *         }
      *     })
      */
-    public addRouteVisibilityFilter(
-        request: MktAgiApi.PostGatewayUserIdRoutesIdFiltersRequest,
+    public grantRouteAccess(
+        request: MktAgiApi.PostGatewayUserIdRoutesIdGrantsRequest,
         requestOptions?: UserRoutesClient.RequestOptions,
     ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny> {
-        return core.HttpResponsePromise.fromPromise(this.__addRouteVisibilityFilter(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__grantRouteAccess(request, requestOptions));
     }
 
-    private async __addRouteVisibilityFilter(
-        request: MktAgiApi.PostGatewayUserIdRoutesIdFiltersRequest,
+    private async __grantRouteAccess(
+        request: MktAgiApi.PostGatewayUserIdRoutesIdGrantsRequest,
         requestOptions?: UserRoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>> {
         const { user_id: userId, id, body: _body } = request;
@@ -465,7 +467,7 @@ export class UserRoutesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.MktAgiApiEnvironment.Default,
-                `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/filters`,
+                `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/grants`,
             ),
             method: "POST",
             headers: _headers,
@@ -512,14 +514,14 @@ export class UserRoutesClient {
             _response.error,
             _response.rawResponse,
             "POST",
-            "/gateway/{user_id}/routes/{id}/filters",
+            "/gateway/{user_id}/routes/{id}/grants",
         );
     }
 
     /**
-     * Revoke a user's access to a filtered route
+     * Revoke a user's access to a route
      *
-     * @param {MktAgiApi.DeleteGatewayUserIdRoutesIdFiltersTargetUserIdRequest} request
+     * @param {MktAgiApi.DeleteGatewayUserIdRoutesIdGrantsTargetUserIdRequest} request
      * @param {UserRoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -528,21 +530,21 @@ export class UserRoutesClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userRoutes.removeRouteVisibilityFilter({
+     *     await client.userRoutes.revokeRouteAccess({
      *         user_id: 1,
      *         id: 1,
      *         target_user_id: 1
      *     })
      */
-    public removeRouteVisibilityFilter(
-        request: MktAgiApi.DeleteGatewayUserIdRoutesIdFiltersTargetUserIdRequest,
+    public revokeRouteAccess(
+        request: MktAgiApi.DeleteGatewayUserIdRoutesIdGrantsTargetUserIdRequest,
         requestOptions?: UserRoutesClient.RequestOptions,
     ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny> {
-        return core.HttpResponsePromise.fromPromise(this.__removeRouteVisibilityFilter(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__revokeRouteAccess(request, requestOptions));
     }
 
-    private async __removeRouteVisibilityFilter(
-        request: MktAgiApi.DeleteGatewayUserIdRoutesIdFiltersTargetUserIdRequest,
+    private async __revokeRouteAccess(
+        request: MktAgiApi.DeleteGatewayUserIdRoutesIdGrantsTargetUserIdRequest,
         requestOptions?: UserRoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>> {
         const { user_id: userId, id, target_user_id: targetUserId } = request;
@@ -557,7 +559,7 @@ export class UserRoutesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.MktAgiApiEnvironment.Default,
-                `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/filters/${core.url.encodePathParam(targetUserId)}`,
+                `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/grants/${core.url.encodePathParam(targetUserId)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -601,7 +603,7 @@ export class UserRoutesClient {
             _response.error,
             _response.rawResponse,
             "DELETE",
-            "/gateway/{user_id}/routes/{id}/filters/{target_user_id}",
+            "/gateway/{user_id}/routes/{id}/grants/{target_user_id}",
         );
     }
 }

@@ -22,7 +22,7 @@ export declare class AdminBulletinsClient {
      * @example
      *     await client.adminBulletins.listAllBulletinsAdmin()
      */
-    listAllBulletinsAdmin(request?: MktAgiApi.GetAdminBulletinsRequest, requestOptions?: AdminBulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinDomainBulletin>;
+    listAllBulletinsAdmin(request?: MktAgiApi.GetAdminBulletinsRequest, requestOptions?: AdminBulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinInternalDomainBulletin>;
     private __listAllBulletinsAdmin;
     /**
      * Create a new announcement, changelog, or doc. Requires admin role.
@@ -39,7 +39,7 @@ export declare class AdminBulletinsClient {
      *         "key": "value"
      *     })
      */
-    createANewBulletin(request: MktAgiApi.PostAdminBulletinsRequest, requestOptions?: AdminBulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin>;
+    createANewBulletin(request: MktAgiApi.PostAdminBulletinsRequest, requestOptions?: AdminBulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin>;
     private __createANewBulletin;
     /**
      * Return any bulletin by ID including drafts and expired ones. Requires admin role.
@@ -56,7 +56,7 @@ export declare class AdminBulletinsClient {
      *         id: 1
      *     })
      */
-    getBulletinByIdAdmin(request: MktAgiApi.GetAdminBulletinsIdRequest, requestOptions?: AdminBulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin>;
+    getBulletinByIdAdmin(request: MktAgiApi.GetAdminBulletinsIdRequest, requestOptions?: AdminBulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin>;
     private __getBulletinByIdAdmin;
     /**
      * Update an existing bulletin's content or metadata. Requires admin role.
@@ -77,7 +77,7 @@ export declare class AdminBulletinsClient {
      *         }
      *     })
      */
-    updateABulletin(request: MktAgiApi.PutAdminBulletinsIdRequest, requestOptions?: AdminBulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin>;
+    updateABulletin(request: MktAgiApi.PutAdminBulletinsIdRequest, requestOptions?: AdminBulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin>;
     private __updateABulletin;
     /**
      * Delete a draft bulletin. Requires admin role.

@@ -24,9 +24,9 @@ export class UserModelsClient {
     }
 
     /**
-     * Return all users who have filter access to a model
+     * Return all access grants for a model
      *
-     * @param {MktAgiApi.GetGatewayUserIdModelsIdFiltersRequest} request
+     * @param {MktAgiApi.GetGatewayUserIdModelsIdGrantsRequest} request
      * @param {UserModelsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -34,22 +34,24 @@ export class UserModelsClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userModels.listModelVisibilityFilters({
+     *     await client.userModels.listModelAccessGrants({
      *         user_id: 1,
      *         id: 1
      *     })
      */
-    public listModelVisibilityFilters(
-        request: MktAgiApi.GetGatewayUserIdModelsIdFiltersRequest,
+    public listModelAccessGrants(
+        request: MktAgiApi.GetGatewayUserIdModelsIdGrantsRequest,
         requestOptions?: UserModelsClient.RequestOptions,
-    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint> {
-        return core.HttpResponsePromise.fromPromise(this.__listModelVisibilityFilters(request, requestOptions));
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamAccessGrant> {
+        return core.HttpResponsePromise.fromPromise(this.__listModelAccessGrants(request, requestOptions));
     }
 
-    private async __listModelVisibilityFilters(
-        request: MktAgiApi.GetGatewayUserIdModelsIdFiltersRequest,
+    private async __listModelAccessGrants(
+        request: MktAgiApi.GetGatewayUserIdModelsIdGrantsRequest,
         requestOptions?: UserModelsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint>> {
+    ): Promise<
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamAccessGrant>
+    > {
         const { user_id: userId, id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -62,7 +64,7 @@ export class UserModelsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.MktAgiApiEnvironment.Default,
-                `gateway/${core.url.encodePathParam(userId)}/models/${core.url.encodePathParam(id)}/filters`,
+                `gateway/${core.url.encodePathParam(userId)}/models/${core.url.encodePathParam(id)}/grants`,
             ),
             method: "GET",
             headers: _headers,
@@ -75,7 +77,7 @@ export class UserModelsClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint,
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamAccessGrant,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -101,14 +103,14 @@ export class UserModelsClient {
             _response.error,
             _response.rawResponse,
             "GET",
-            "/gateway/{user_id}/models/{id}/filters",
+            "/gateway/{user_id}/models/{id}/grants",
         );
     }
 
     /**
-     * Grant a user access to a private model via filter
+     * Grant a user access to a private model
      *
-     * @param {MktAgiApi.PostGatewayUserIdModelsIdFiltersRequest} request
+     * @param {MktAgiApi.PostGatewayUserIdModelsIdGrantsRequest} request
      * @param {UserModelsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -117,7 +119,7 @@ export class UserModelsClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userModels.addModelVisibilityFilter({
+     *     await client.userModels.grantModelAccess({
      *         user_id: 1,
      *         id: 1,
      *         body: {
@@ -125,15 +127,15 @@ export class UserModelsClient {
      *         }
      *     })
      */
-    public addModelVisibilityFilter(
-        request: MktAgiApi.PostGatewayUserIdModelsIdFiltersRequest,
+    public grantModelAccess(
+        request: MktAgiApi.PostGatewayUserIdModelsIdGrantsRequest,
         requestOptions?: UserModelsClient.RequestOptions,
     ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny> {
-        return core.HttpResponsePromise.fromPromise(this.__addModelVisibilityFilter(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__grantModelAccess(request, requestOptions));
     }
 
-    private async __addModelVisibilityFilter(
-        request: MktAgiApi.PostGatewayUserIdModelsIdFiltersRequest,
+    private async __grantModelAccess(
+        request: MktAgiApi.PostGatewayUserIdModelsIdGrantsRequest,
         requestOptions?: UserModelsClient.RequestOptions,
     ): Promise<core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>> {
         const { user_id: userId, id, body: _body } = request;
@@ -148,7 +150,7 @@ export class UserModelsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.MktAgiApiEnvironment.Default,
-                `gateway/${core.url.encodePathParam(userId)}/models/${core.url.encodePathParam(id)}/filters`,
+                `gateway/${core.url.encodePathParam(userId)}/models/${core.url.encodePathParam(id)}/grants`,
             ),
             method: "POST",
             headers: _headers,
@@ -195,14 +197,14 @@ export class UserModelsClient {
             _response.error,
             _response.rawResponse,
             "POST",
-            "/gateway/{user_id}/models/{id}/filters",
+            "/gateway/{user_id}/models/{id}/grants",
         );
     }
 
     /**
-     * Revoke a user's access to a filtered model
+     * Revoke a user's access to a model
      *
-     * @param {MktAgiApi.DeleteGatewayUserIdModelsIdFiltersTargetUserIdRequest} request
+     * @param {MktAgiApi.DeleteGatewayUserIdModelsIdGrantsTargetUserIdRequest} request
      * @param {UserModelsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -210,21 +212,21 @@ export class UserModelsClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userModels.removeModelVisibilityFilter({
+     *     await client.userModels.revokeModelAccess({
      *         user_id: 1,
      *         id: 1,
      *         target_user_id: 1
      *     })
      */
-    public removeModelVisibilityFilter(
-        request: MktAgiApi.DeleteGatewayUserIdModelsIdFiltersTargetUserIdRequest,
+    public revokeModelAccess(
+        request: MktAgiApi.DeleteGatewayUserIdModelsIdGrantsTargetUserIdRequest,
         requestOptions?: UserModelsClient.RequestOptions,
     ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny> {
-        return core.HttpResponsePromise.fromPromise(this.__removeModelVisibilityFilter(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__revokeModelAccess(request, requestOptions));
     }
 
-    private async __removeModelVisibilityFilter(
-        request: MktAgiApi.DeleteGatewayUserIdModelsIdFiltersTargetUserIdRequest,
+    private async __revokeModelAccess(
+        request: MktAgiApi.DeleteGatewayUserIdModelsIdGrantsTargetUserIdRequest,
         requestOptions?: UserModelsClient.RequestOptions,
     ): Promise<core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>> {
         const { user_id: userId, id, target_user_id: targetUserId } = request;
@@ -239,7 +241,7 @@ export class UserModelsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.MktAgiApiEnvironment.Default,
-                `gateway/${core.url.encodePathParam(userId)}/models/${core.url.encodePathParam(id)}/filters/${core.url.encodePathParam(targetUserId)}`,
+                `gateway/${core.url.encodePathParam(userId)}/models/${core.url.encodePathParam(id)}/grants/${core.url.encodePathParam(targetUserId)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -278,7 +280,7 @@ export class UserModelsClient {
             _response.error,
             _response.rawResponse,
             "DELETE",
-            "/gateway/{user_id}/models/{id}/filters/{target_user_id}",
+            "/gateway/{user_id}/models/{id}/grants/{target_user_id}",
         );
     }
 }

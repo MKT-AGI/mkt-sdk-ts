@@ -182,9 +182,9 @@ export class IamClient {
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/iam/api-keys/{id}");
     }
     /**
-     * 列出资源的可见性过滤器用户列表。返回被添加到可见性白名单中的用户 ID。
+     * 列出资源的所有访问授权记录。
      *
-     * @param {MktAgiApi.GetIamVisibilityFiltersRequest} request
+     * @param {MktAgiApi.GetIamGrantsRequest} request
      * @param {IamClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -192,15 +192,15 @@ export class IamClient {
      * @throws {@link MktAgiApi.InternalServerError}
      *
      * @example
-     *     await client.iam.listVisibilityFilters({
+     *     await client.iam.listResourceAccessGrants({
      *         resource_type: "resource_type",
      *         resource_id: 1
      *     })
      */
-    listVisibilityFilters(request, requestOptions) {
-        return core.HttpResponsePromise.fromPromise(this.__listVisibilityFilters(request, requestOptions));
+    listResourceAccessGrants(request, requestOptions) {
+        return core.HttpResponsePromise.fromPromise(this.__listResourceAccessGrants(request, requestOptions));
     }
-    async __listVisibilityFilters(request, requestOptions) {
+    async __listResourceAccessGrants(request, requestOptions) {
         const { resource_type: resourceType, resource_id: resourceId } = request;
         const _queryParams = {
             resource_type: resourceType,
@@ -211,7 +211,7 @@ export class IamClient {
         const _response = await core.fetcher({
             url: core.url.join((await core.Supplier.get(this._options.baseUrl)) ??
                 (await core.Supplier.get(this._options.environment)) ??
-                environments.MktAgiApiEnvironment.Default, "iam/visibility-filters"),
+                environments.MktAgiApiEnvironment.Default, "iam/grants"),
             method: "GET",
             headers: _headers,
             queryString: core.url
@@ -247,12 +247,12 @@ export class IamClient {
                     });
             }
         }
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/iam/visibility-filters");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/iam/grants");
     }
     /**
-     * 添加可见性过滤器，将指定用户添加到资源的可见性白名单中。
+     * 授予用户资源访问权限。将指定用户加入资源的授权白名单。
      *
-     * @param {MktAgiApi.PostIamVisibilityFiltersRequest} request
+     * @param {MktAgiApi.PostIamGrantsRequest} request
      * @param {IamClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -260,20 +260,20 @@ export class IamClient {
      * @throws {@link MktAgiApi.InternalServerError}
      *
      * @example
-     *     await client.iam.addVisibilityFilter({
+     *     await client.iam.grantResourceAccess({
      *         "key": "value"
      *     })
      */
-    addVisibilityFilter(request, requestOptions) {
-        return core.HttpResponsePromise.fromPromise(this.__addVisibilityFilter(request, requestOptions));
+    grantResourceAccess(request, requestOptions) {
+        return core.HttpResponsePromise.fromPromise(this.__grantResourceAccess(request, requestOptions));
     }
-    async __addVisibilityFilter(request, requestOptions) {
+    async __grantResourceAccess(request, requestOptions) {
         const _authRequest = await this._options.authProvider.getAuthRequest();
         const _headers = mergeHeaders(_authRequest.headers, this._options?.headers, requestOptions?.headers);
         const _response = await core.fetcher({
             url: core.url.join((await core.Supplier.get(this._options.baseUrl)) ??
                 (await core.Supplier.get(this._options.environment)) ??
-                environments.MktAgiApiEnvironment.Default, "iam/visibility-filters"),
+                environments.MktAgiApiEnvironment.Default, "iam/grants"),
             method: "POST",
             headers: _headers,
             contentType: "application/json",
@@ -305,12 +305,12 @@ export class IamClient {
                     });
             }
         }
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/iam/visibility-filters");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/iam/grants");
     }
     /**
-     * 移除可见性过滤器，将指定用户从资源的可见性白名单中移除。
+     * 撤销用户的资源访问权限，将指定用户从资源的授权白名单中移除。
      *
-     * @param {MktAgiApi.DeleteIamVisibilityFiltersResourceTypeResourceIdUserIdRequest} request
+     * @param {MktAgiApi.DeleteIamGrantsResourceTypeResourceIdUserIdRequest} request
      * @param {IamClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -318,23 +318,23 @@ export class IamClient {
      * @throws {@link MktAgiApi.InternalServerError}
      *
      * @example
-     *     await client.iam.removeVisibilityFilter({
+     *     await client.iam.revokeResourceAccess({
      *         resource_type: "resource_type",
      *         resource_id: 1,
      *         user_id: 1
      *     })
      */
-    removeVisibilityFilter(request, requestOptions) {
-        return core.HttpResponsePromise.fromPromise(this.__removeVisibilityFilter(request, requestOptions));
+    revokeResourceAccess(request, requestOptions) {
+        return core.HttpResponsePromise.fromPromise(this.__revokeResourceAccess(request, requestOptions));
     }
-    async __removeVisibilityFilter(request, requestOptions) {
+    async __revokeResourceAccess(request, requestOptions) {
         const { resource_type: resourceType, resource_id: resourceId, user_id: userId } = request;
         const _authRequest = await this._options.authProvider.getAuthRequest();
         const _headers = mergeHeaders(_authRequest.headers, this._options?.headers, requestOptions?.headers);
         const _response = await core.fetcher({
             url: core.url.join((await core.Supplier.get(this._options.baseUrl)) ??
                 (await core.Supplier.get(this._options.environment)) ??
-                environments.MktAgiApiEnvironment.Default, `iam/visibility-filters/${core.url.encodePathParam(resourceType)}/${core.url.encodePathParam(resourceId)}/${core.url.encodePathParam(userId)}`),
+                environments.MktAgiApiEnvironment.Default, `iam/grants/${core.url.encodePathParam(resourceType)}/${core.url.encodePathParam(resourceId)}/${core.url.encodePathParam(userId)}`),
             method: "DELETE",
             headers: _headers,
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
@@ -363,6 +363,6 @@ export class IamClient {
                     });
             }
         }
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/iam/visibility-filters/{resource_type}/{resource_id}/{user_id}");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/iam/grants/{resource_type}/{resource_id}/{user_id}");
     }
 }

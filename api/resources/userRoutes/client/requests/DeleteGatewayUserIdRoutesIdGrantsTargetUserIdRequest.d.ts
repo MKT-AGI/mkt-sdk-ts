@@ -1,0 +1,16 @@
+/**
+ * @example
+ *     {
+ *         user_id: 1,
+ *         id: 1,
+ *         target_user_id: 1
+ *     }
+ */
+export interface DeleteGatewayUserIdRoutesIdGrantsTargetUserIdRequest {
+    /** User ID */
+    user_id: number;
+    /** Route ID */
+    id: number;
+    /** Target user ID */
+    target_user_id: number;
+}
