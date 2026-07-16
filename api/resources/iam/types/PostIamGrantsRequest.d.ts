@@ -1,0 +1,5 @@
+import type * as MktAgiApi from "../../../index.js";
+export type PostIamGrantsRequest = Record<string, unknown>
+/**
+ * Resource access grant request */
+ | MktAgiApi.InternalIamInternalWebGrantAccessRequest;

@@ -1,6 +1,8 @@
 export interface InternalAigatewayInternalWebUserModelRequest {
     /** BillingMode is the billing mode: "token" (default) or "per_request". */
     billing_mode?: string | undefined;
+    /** BuyoutPrice is the optional buyout price for marketplace purchase (NULL = not available). */
+    buyout_price?: number | undefined;
     /** CacheHitPrice is the cache hit price per 1M tokens (CNY). 0 means same as input_price. */
     cache_hit_price?: number | undefined;
     /** Currency is the billing currency (CNY or USD, default CNY). */

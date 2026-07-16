@@ -255,9 +255,9 @@ export class IamClient {
     }
 
     /**
-     * 列出资源的可见性过滤器用户列表。返回被添加到可见性白名单中的用户 ID。
+     * 列出资源的所有访问授权记录。
      *
-     * @param {MktAgiApi.GetIamVisibilityFiltersRequest} request
+     * @param {MktAgiApi.GetIamGrantsRequest} request
      * @param {IamClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -265,22 +265,24 @@ export class IamClient {
      * @throws {@link MktAgiApi.InternalServerError}
      *
      * @example
-     *     await client.iam.listVisibilityFilters({
+     *     await client.iam.listResourceAccessGrants({
      *         resource_type: "resource_type",
      *         resource_id: 1
      *     })
      */
-    public listVisibilityFilters(
-        request: MktAgiApi.GetIamVisibilityFiltersRequest,
+    public listResourceAccessGrants(
+        request: MktAgiApi.GetIamGrantsRequest,
         requestOptions?: IamClient.RequestOptions,
-    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint> {
-        return core.HttpResponsePromise.fromPromise(this.__listVisibilityFilters(request, requestOptions));
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamInternalDomainAccessGrant> {
+        return core.HttpResponsePromise.fromPromise(this.__listResourceAccessGrants(request, requestOptions));
     }
 
-    private async __listVisibilityFilters(
-        request: MktAgiApi.GetIamVisibilityFiltersRequest,
+    private async __listResourceAccessGrants(
+        request: MktAgiApi.GetIamGrantsRequest,
         requestOptions?: IamClient.RequestOptions,
-    ): Promise<core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint>> {
+    ): Promise<
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamInternalDomainAccessGrant>
+    > {
         const { resource_type: resourceType, resource_id: resourceId } = request;
         const _queryParams: Record<string, unknown> = {
             resource_type: resourceType,
@@ -297,7 +299,7 @@ export class IamClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.MktAgiApiEnvironment.Default,
-                "iam/visibility-filters",
+                "iam/grants",
             ),
             method: "GET",
             headers: _headers,
@@ -314,7 +316,7 @@ export class IamClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint,
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamInternalDomainAccessGrant,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -339,13 +341,13 @@ export class IamClient {
             }
         }
 
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/iam/visibility-filters");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/iam/grants");
     }
 
     /**
-     * 添加可见性过滤器，将指定用户添加到资源的可见性白名单中。
+     * 授予用户资源访问权限。将指定用户加入资源的授权白名单。
      *
-     * @param {MktAgiApi.PostIamVisibilityFiltersRequest} request
+     * @param {MktAgiApi.PostIamGrantsRequest} request
      * @param {IamClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -353,19 +355,19 @@ export class IamClient {
      * @throws {@link MktAgiApi.InternalServerError}
      *
      * @example
-     *     await client.iam.addVisibilityFilter({
+     *     await client.iam.grantResourceAccess({
      *         "key": "value"
      *     })
      */
-    public addVisibilityFilter(
-        request: MktAgiApi.PostIamVisibilityFiltersRequest,
+    public grantResourceAccess(
+        request: MktAgiApi.PostIamGrantsRequest,
         requestOptions?: IamClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__addVisibilityFilter(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__grantResourceAccess(request, requestOptions));
     }
 
-    private async __addVisibilityFilter(
-        request: MktAgiApi.PostIamVisibilityFiltersRequest,
+    private async __grantResourceAccess(
+        request: MktAgiApi.PostIamGrantsRequest,
         requestOptions?: IamClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -379,7 +381,7 @@ export class IamClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.MktAgiApiEnvironment.Default,
-                "iam/visibility-filters",
+                "iam/grants",
             ),
             method: "POST",
             headers: _headers,
@@ -417,13 +419,13 @@ export class IamClient {
             }
         }
 
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/iam/visibility-filters");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/iam/grants");
     }
 
     /**
-     * 移除可见性过滤器，将指定用户从资源的可见性白名单中移除。
+     * 撤销用户的资源访问权限，将指定用户从资源的授权白名单中移除。
      *
-     * @param {MktAgiApi.DeleteIamVisibilityFiltersResourceTypeResourceIdUserIdRequest} request
+     * @param {MktAgiApi.DeleteIamGrantsResourceTypeResourceIdUserIdRequest} request
      * @param {IamClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -431,21 +433,21 @@ export class IamClient {
      * @throws {@link MktAgiApi.InternalServerError}
      *
      * @example
-     *     await client.iam.removeVisibilityFilter({
+     *     await client.iam.revokeResourceAccess({
      *         resource_type: "resource_type",
      *         resource_id: 1,
      *         user_id: 1
      *     })
      */
-    public removeVisibilityFilter(
-        request: MktAgiApi.DeleteIamVisibilityFiltersResourceTypeResourceIdUserIdRequest,
+    public revokeResourceAccess(
+        request: MktAgiApi.DeleteIamGrantsResourceTypeResourceIdUserIdRequest,
         requestOptions?: IamClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__removeVisibilityFilter(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__revokeResourceAccess(request, requestOptions));
     }
 
-    private async __removeVisibilityFilter(
-        request: MktAgiApi.DeleteIamVisibilityFiltersResourceTypeResourceIdUserIdRequest,
+    private async __revokeResourceAccess(
+        request: MktAgiApi.DeleteIamGrantsResourceTypeResourceIdUserIdRequest,
         requestOptions?: IamClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const { resource_type: resourceType, resource_id: resourceId, user_id: userId } = request;
@@ -460,7 +462,7 @@ export class IamClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.MktAgiApiEnvironment.Default,
-                `iam/visibility-filters/${core.url.encodePathParam(resourceType)}/${core.url.encodePathParam(resourceId)}/${core.url.encodePathParam(userId)}`,
+                `iam/grants/${core.url.encodePathParam(resourceType)}/${core.url.encodePathParam(resourceId)}/${core.url.encodePathParam(userId)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -499,7 +501,7 @@ export class IamClient {
             _response.error,
             _response.rawResponse,
             "DELETE",
-            "/iam/visibility-filters/{resource_type}/{resource_id}/{user_id}",
+            "/iam/grants/{resource_type}/{resource_id}/{user_id}",
         );
     }
 }

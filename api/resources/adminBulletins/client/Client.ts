@@ -38,7 +38,7 @@ export class AdminBulletinsClient {
     public listAllBulletinsAdmin(
         request: MktAgiApi.GetAdminBulletinsRequest = {},
         requestOptions?: AdminBulletinsClient.RequestOptions,
-    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinDomainBulletin> {
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinInternalDomainBulletin> {
         return core.HttpResponsePromise.fromPromise(this.__listAllBulletinsAdmin(request, requestOptions));
     }
 
@@ -46,7 +46,7 @@ export class AdminBulletinsClient {
         request: MktAgiApi.GetAdminBulletinsRequest = {},
         requestOptions?: AdminBulletinsClient.RequestOptions,
     ): Promise<
-        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinDomainBulletin>
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinInternalDomainBulletin>
     > {
         const {
             type: type_,
@@ -91,7 +91,7 @@ export class AdminBulletinsClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinDomainBulletin,
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinInternalDomainBulletin,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -135,7 +135,7 @@ export class AdminBulletinsClient {
     public createANewBulletin(
         request: MktAgiApi.PostAdminBulletinsRequest,
         requestOptions?: AdminBulletinsClient.RequestOptions,
-    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin> {
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin> {
         return core.HttpResponsePromise.fromPromise(this.__createANewBulletin(request, requestOptions));
     }
 
@@ -143,7 +143,7 @@ export class AdminBulletinsClient {
         request: MktAgiApi.PostAdminBulletinsRequest,
         requestOptions?: AdminBulletinsClient.RequestOptions,
     ): Promise<
-        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin>
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin>
     > {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(this._options?.headers, requestOptions?.headers);
         const _response = await core.fetcher({
@@ -167,7 +167,7 @@ export class AdminBulletinsClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin,
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -213,7 +213,7 @@ export class AdminBulletinsClient {
     public getBulletinByIdAdmin(
         request: MktAgiApi.GetAdminBulletinsIdRequest,
         requestOptions?: AdminBulletinsClient.RequestOptions,
-    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin> {
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin> {
         return core.HttpResponsePromise.fromPromise(this.__getBulletinByIdAdmin(request, requestOptions));
     }
 
@@ -221,7 +221,7 @@ export class AdminBulletinsClient {
         request: MktAgiApi.GetAdminBulletinsIdRequest,
         requestOptions?: AdminBulletinsClient.RequestOptions,
     ): Promise<
-        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin>
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin>
     > {
         const { id } = request;
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(this._options?.headers, requestOptions?.headers);
@@ -243,7 +243,7 @@ export class AdminBulletinsClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin,
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -293,7 +293,7 @@ export class AdminBulletinsClient {
     public updateABulletin(
         request: MktAgiApi.PutAdminBulletinsIdRequest,
         requestOptions?: AdminBulletinsClient.RequestOptions,
-    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin> {
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin> {
         return core.HttpResponsePromise.fromPromise(this.__updateABulletin(request, requestOptions));
     }
 
@@ -301,7 +301,7 @@ export class AdminBulletinsClient {
         request: MktAgiApi.PutAdminBulletinsIdRequest,
         requestOptions?: AdminBulletinsClient.RequestOptions,
     ): Promise<
-        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin>
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin>
     > {
         const { id, body: _body } = request;
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(this._options?.headers, requestOptions?.headers);
@@ -326,7 +326,7 @@ export class AdminBulletinsClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin,
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin,
                 rawResponse: _response.rawResponse,
             };
         }

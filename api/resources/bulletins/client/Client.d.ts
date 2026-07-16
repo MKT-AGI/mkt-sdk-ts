@@ -19,7 +19,7 @@ export declare class BulletinsClient {
      * @example
      *     await client.bulletins.listPublishedBulletins()
      */
-    listPublishedBulletins(request?: MktAgiApi.GetBulletinsRequest, requestOptions?: BulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinDomainBulletin>;
+    listPublishedBulletins(request?: MktAgiApi.GetBulletinsRequest, requestOptions?: BulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinInternalDomainBulletin>;
     private __listPublishedBulletins;
     /**
      * Return a single published bulletin by its ID. Returns 404 if not found or expired.
@@ -34,6 +34,6 @@ export declare class BulletinsClient {
      *         id: 1
      *     })
      */
-    getBulletinById(request: MktAgiApi.GetBulletinsIdRequest, requestOptions?: BulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin>;
+    getBulletinById(request: MktAgiApi.GetBulletinsIdRequest, requestOptions?: BulletinsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin>;
     private __getBulletinById;
 }

@@ -34,7 +34,7 @@ export class BulletinsClient {
     public listPublishedBulletins(
         request: MktAgiApi.GetBulletinsRequest = {},
         requestOptions?: BulletinsClient.RequestOptions,
-    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinDomainBulletin> {
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinInternalDomainBulletin> {
         return core.HttpResponsePromise.fromPromise(this.__listPublishedBulletins(request, requestOptions));
     }
 
@@ -42,7 +42,7 @@ export class BulletinsClient {
         request: MktAgiApi.GetBulletinsRequest = {},
         requestOptions?: BulletinsClient.RequestOptions,
     ): Promise<
-        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinDomainBulletin>
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinInternalDomainBulletin>
     > {
         const { type: type_, category, section, version, limit, cursor_val: cursorVal, cursor_id: cursorId } = request;
         const _queryParams: Record<string, unknown> = {
@@ -77,7 +77,7 @@ export class BulletinsClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinDomainBulletin,
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalBulletinInternalDomainBulletin,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -109,7 +109,7 @@ export class BulletinsClient {
     public getBulletinById(
         request: MktAgiApi.GetBulletinsIdRequest,
         requestOptions?: BulletinsClient.RequestOptions,
-    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin> {
+    ): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin> {
         return core.HttpResponsePromise.fromPromise(this.__getBulletinById(request, requestOptions));
     }
 
@@ -117,7 +117,7 @@ export class BulletinsClient {
         request: MktAgiApi.GetBulletinsIdRequest,
         requestOptions?: BulletinsClient.RequestOptions,
     ): Promise<
-        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin>
+        core.WithRawResponse<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin>
     > {
         const { id } = request;
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(this._options?.headers, requestOptions?.headers);
@@ -139,7 +139,7 @@ export class BulletinsClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinDomainBulletin,
+                data: _response.body as MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultGithubComMktAgiAixInternalBulletinInternalDomainBulletin,
                 rawResponse: _response.rawResponse,
             };
         }

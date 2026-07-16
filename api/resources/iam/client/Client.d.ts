@@ -58,9 +58,9 @@ export declare class IamClient {
     revokeApiKey(request: MktAgiApi.DeleteIamApiKeysIdRequest, requestOptions?: IamClient.RequestOptions): core.HttpResponsePromise<void>;
     private __revokeApiKey;
     /**
-     * 列出资源的可见性过滤器用户列表。返回被添加到可见性白名单中的用户 ID。
+     * 列出资源的所有访问授权记录。
      *
-     * @param {MktAgiApi.GetIamVisibilityFiltersRequest} request
+     * @param {MktAgiApi.GetIamGrantsRequest} request
      * @param {IamClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -68,17 +68,17 @@ export declare class IamClient {
      * @throws {@link MktAgiApi.InternalServerError}
      *
      * @example
-     *     await client.iam.listVisibilityFilters({
+     *     await client.iam.listResourceAccessGrants({
      *         resource_type: "resource_type",
      *         resource_id: 1
      *     })
      */
-    listVisibilityFilters(request: MktAgiApi.GetIamVisibilityFiltersRequest, requestOptions?: IamClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint>;
-    private __listVisibilityFilters;
+    listResourceAccessGrants(request: MktAgiApi.GetIamGrantsRequest, requestOptions?: IamClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamInternalDomainAccessGrant>;
+    private __listResourceAccessGrants;
     /**
-     * 添加可见性过滤器，将指定用户添加到资源的可见性白名单中。
+     * 授予用户资源访问权限。将指定用户加入资源的授权白名单。
      *
-     * @param {MktAgiApi.PostIamVisibilityFiltersRequest} request
+     * @param {MktAgiApi.PostIamGrantsRequest} request
      * @param {IamClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -86,16 +86,16 @@ export declare class IamClient {
      * @throws {@link MktAgiApi.InternalServerError}
      *
      * @example
-     *     await client.iam.addVisibilityFilter({
+     *     await client.iam.grantResourceAccess({
      *         "key": "value"
      *     })
      */
-    addVisibilityFilter(request: MktAgiApi.PostIamVisibilityFiltersRequest, requestOptions?: IamClient.RequestOptions): core.HttpResponsePromise<void>;
-    private __addVisibilityFilter;
+    grantResourceAccess(request: MktAgiApi.PostIamGrantsRequest, requestOptions?: IamClient.RequestOptions): core.HttpResponsePromise<void>;
+    private __grantResourceAccess;
     /**
-     * 移除可见性过滤器，将指定用户从资源的可见性白名单中移除。
+     * 撤销用户的资源访问权限，将指定用户从资源的授权白名单中移除。
      *
-     * @param {MktAgiApi.DeleteIamVisibilityFiltersResourceTypeResourceIdUserIdRequest} request
+     * @param {MktAgiApi.DeleteIamGrantsResourceTypeResourceIdUserIdRequest} request
      * @param {IamClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -103,12 +103,12 @@ export declare class IamClient {
      * @throws {@link MktAgiApi.InternalServerError}
      *
      * @example
-     *     await client.iam.removeVisibilityFilter({
+     *     await client.iam.revokeResourceAccess({
      *         resource_type: "resource_type",
      *         resource_id: 1,
      *         user_id: 1
      *     })
      */
-    removeVisibilityFilter(request: MktAgiApi.DeleteIamVisibilityFiltersResourceTypeResourceIdUserIdRequest, requestOptions?: IamClient.RequestOptions): core.HttpResponsePromise<void>;
-    private __removeVisibilityFilter;
+    revokeResourceAccess(request: MktAgiApi.DeleteIamGrantsResourceTypeResourceIdUserIdRequest, requestOptions?: IamClient.RequestOptions): core.HttpResponsePromise<void>;
+    private __revokeResourceAccess;
 }

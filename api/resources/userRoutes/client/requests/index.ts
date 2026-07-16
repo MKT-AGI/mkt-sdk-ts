@@ -1,7 +1,7 @@
-export type { DeleteGatewayUserIdRoutesIdFiltersTargetUserIdRequest } from "./DeleteGatewayUserIdRoutesIdFiltersTargetUserIdRequest.js";
+export type { DeleteGatewayUserIdRoutesIdGrantsTargetUserIdRequest } from "./DeleteGatewayUserIdRoutesIdGrantsTargetUserIdRequest.js";
 export type { DeleteGatewayUserIdRoutesIdRequest } from "./DeleteGatewayUserIdRoutesIdRequest.js";
-export type { GetGatewayUserIdRoutesIdFiltersRequest } from "./GetGatewayUserIdRoutesIdFiltersRequest.js";
+export type { GetGatewayUserIdRoutesIdGrantsRequest } from "./GetGatewayUserIdRoutesIdGrantsRequest.js";
 export type { GetGatewayUserIdRoutesIdRequest } from "./GetGatewayUserIdRoutesIdRequest.js";
 export type { GetGatewayUserIdRoutesRequest } from "./GetGatewayUserIdRoutesRequest.js";
-export type { PostGatewayUserIdRoutesIdFiltersRequest } from "./PostGatewayUserIdRoutesIdFiltersRequest.js";
+export type { PostGatewayUserIdRoutesIdGrantsRequest } from "./PostGatewayUserIdRoutesIdGrantsRequest.js";
 export type { PostGatewayUserIdRoutesRequest } from "./PostGatewayUserIdRoutesRequest.js";

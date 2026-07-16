@@ -11,9 +11,9 @@ export declare class UserModelsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<UserModelsClient.Options>;
     constructor(options?: UserModelsClient.Options);
     /**
-     * Return all users who have filter access to a model
+     * Return all access grants for a model
      *
-     * @param {MktAgiApi.GetGatewayUserIdModelsIdFiltersRequest} request
+     * @param {MktAgiApi.GetGatewayUserIdModelsIdGrantsRequest} request
      * @param {UserModelsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -21,17 +21,17 @@ export declare class UserModelsClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userModels.listModelVisibilityFilters({
+     *     await client.userModels.listModelAccessGrants({
      *         user_id: 1,
      *         id: 1
      *     })
      */
-    listModelVisibilityFilters(request: MktAgiApi.GetGatewayUserIdModelsIdFiltersRequest, requestOptions?: UserModelsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayUint>;
-    private __listModelVisibilityFilters;
+    listModelAccessGrants(request: MktAgiApi.GetGatewayUserIdModelsIdGrantsRequest, requestOptions?: UserModelsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultArrayGithubComMktAgiAixInternalIamAccessGrant>;
+    private __listModelAccessGrants;
     /**
-     * Grant a user access to a private model via filter
+     * Grant a user access to a private model
      *
-     * @param {MktAgiApi.PostGatewayUserIdModelsIdFiltersRequest} request
+     * @param {MktAgiApi.PostGatewayUserIdModelsIdGrantsRequest} request
      * @param {UserModelsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -40,7 +40,7 @@ export declare class UserModelsClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userModels.addModelVisibilityFilter({
+     *     await client.userModels.grantModelAccess({
      *         user_id: 1,
      *         id: 1,
      *         body: {
@@ -48,12 +48,12 @@ export declare class UserModelsClient {
      *         }
      *     })
      */
-    addModelVisibilityFilter(request: MktAgiApi.PostGatewayUserIdModelsIdFiltersRequest, requestOptions?: UserModelsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>;
-    private __addModelVisibilityFilter;
+    grantModelAccess(request: MktAgiApi.PostGatewayUserIdModelsIdGrantsRequest, requestOptions?: UserModelsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>;
+    private __grantModelAccess;
     /**
-     * Revoke a user's access to a filtered model
+     * Revoke a user's access to a model
      *
-     * @param {MktAgiApi.DeleteGatewayUserIdModelsIdFiltersTargetUserIdRequest} request
+     * @param {MktAgiApi.DeleteGatewayUserIdModelsIdGrantsTargetUserIdRequest} request
      * @param {UserModelsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -61,12 +61,12 @@ export declare class UserModelsClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userModels.removeModelVisibilityFilter({
+     *     await client.userModels.revokeModelAccess({
      *         user_id: 1,
      *         id: 1,
      *         target_user_id: 1
      *     })
      */
-    removeModelVisibilityFilter(request: MktAgiApi.DeleteGatewayUserIdModelsIdFiltersTargetUserIdRequest, requestOptions?: UserModelsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>;
-    private __removeModelVisibilityFilter;
+    revokeModelAccess(request: MktAgiApi.DeleteGatewayUserIdModelsIdGrantsTargetUserIdRequest, requestOptions?: UserModelsClient.RequestOptions): core.HttpResponsePromise<MktAgiApi.GithubComMktAgiAixInternalPkgGinxResultAny>;
+    private __revokeModelAccess;
 }

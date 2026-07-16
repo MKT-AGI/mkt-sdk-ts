@@ -9,6 +9,6 @@ export interface InternalFilesInternalWebIngestUrlRequest {
     filename: string;
     /** source URL to download */
     url: string;
-    /** "private" | "public" | "filter" */
+    /** Visibility constant (domain.VisibilityPrivate|Public) */
     visibility?: string | undefined;
 }

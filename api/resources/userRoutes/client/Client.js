@@ -250,9 +250,9 @@ export class UserRoutesClient {
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/gateway/{user_id}/routes/{id}");
     }
     /**
-     * Return all users who have filter access to a route
+     * Return all access grants for a route
      *
-     * @param {MktAgiApi.GetGatewayUserIdRoutesIdFiltersRequest} request
+     * @param {MktAgiApi.GetGatewayUserIdRoutesIdGrantsRequest} request
      * @param {UserRoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -261,22 +261,22 @@ export class UserRoutesClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userRoutes.listRouteVisibilityFilters({
+     *     await client.userRoutes.listRouteAccessGrants({
      *         user_id: 1,
      *         id: 1
      *     })
      */
-    listRouteVisibilityFilters(request, requestOptions) {
-        return core.HttpResponsePromise.fromPromise(this.__listRouteVisibilityFilters(request, requestOptions));
+    listRouteAccessGrants(request, requestOptions) {
+        return core.HttpResponsePromise.fromPromise(this.__listRouteAccessGrants(request, requestOptions));
     }
-    async __listRouteVisibilityFilters(request, requestOptions) {
+    async __listRouteAccessGrants(request, requestOptions) {
         const { user_id: userId, id } = request;
         const _authRequest = await this._options.authProvider.getAuthRequest();
         const _headers = mergeHeaders(_authRequest.headers, this._options?.headers, requestOptions?.headers);
         const _response = await core.fetcher({
             url: core.url.join((await core.Supplier.get(this._options.baseUrl)) ??
                 (await core.Supplier.get(this._options.environment)) ??
-                environments.MktAgiApiEnvironment.Default, `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/filters`),
+                environments.MktAgiApiEnvironment.Default, `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/grants`),
             method: "GET",
             headers: _headers,
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
@@ -310,12 +310,12 @@ export class UserRoutesClient {
                     });
             }
         }
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/gateway/{user_id}/routes/{id}/filters");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/gateway/{user_id}/routes/{id}/grants");
     }
     /**
-     * Grant a user access to a route via filter
+     * Grant a user access to a private route
      *
-     * @param {MktAgiApi.PostGatewayUserIdRoutesIdFiltersRequest} request
+     * @param {MktAgiApi.PostGatewayUserIdRoutesIdGrantsRequest} request
      * @param {UserRoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -324,7 +324,7 @@ export class UserRoutesClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userRoutes.addRouteVisibilityFilter({
+     *     await client.userRoutes.grantRouteAccess({
      *         user_id: 1,
      *         id: 1,
      *         body: {
@@ -332,17 +332,17 @@ export class UserRoutesClient {
      *         }
      *     })
      */
-    addRouteVisibilityFilter(request, requestOptions) {
-        return core.HttpResponsePromise.fromPromise(this.__addRouteVisibilityFilter(request, requestOptions));
+    grantRouteAccess(request, requestOptions) {
+        return core.HttpResponsePromise.fromPromise(this.__grantRouteAccess(request, requestOptions));
     }
-    async __addRouteVisibilityFilter(request, requestOptions) {
+    async __grantRouteAccess(request, requestOptions) {
         const { user_id: userId, id, body: _body } = request;
         const _authRequest = await this._options.authProvider.getAuthRequest();
         const _headers = mergeHeaders(_authRequest.headers, this._options?.headers, requestOptions?.headers);
         const _response = await core.fetcher({
             url: core.url.join((await core.Supplier.get(this._options.baseUrl)) ??
                 (await core.Supplier.get(this._options.environment)) ??
-                environments.MktAgiApiEnvironment.Default, `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/filters`),
+                environments.MktAgiApiEnvironment.Default, `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/grants`),
             method: "POST",
             headers: _headers,
             contentType: "application/json",
@@ -379,12 +379,12 @@ export class UserRoutesClient {
                     });
             }
         }
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/gateway/{user_id}/routes/{id}/filters");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/gateway/{user_id}/routes/{id}/grants");
     }
     /**
-     * Revoke a user's access to a filtered route
+     * Revoke a user's access to a route
      *
-     * @param {MktAgiApi.DeleteGatewayUserIdRoutesIdFiltersTargetUserIdRequest} request
+     * @param {MktAgiApi.DeleteGatewayUserIdRoutesIdGrantsTargetUserIdRequest} request
      * @param {UserRoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link MktAgiApi.BadRequestError}
@@ -393,23 +393,23 @@ export class UserRoutesClient {
      * @throws {@link MktAgiApi.NotFoundError}
      *
      * @example
-     *     await client.userRoutes.removeRouteVisibilityFilter({
+     *     await client.userRoutes.revokeRouteAccess({
      *         user_id: 1,
      *         id: 1,
      *         target_user_id: 1
      *     })
      */
-    removeRouteVisibilityFilter(request, requestOptions) {
-        return core.HttpResponsePromise.fromPromise(this.__removeRouteVisibilityFilter(request, requestOptions));
+    revokeRouteAccess(request, requestOptions) {
+        return core.HttpResponsePromise.fromPromise(this.__revokeRouteAccess(request, requestOptions));
     }
-    async __removeRouteVisibilityFilter(request, requestOptions) {
+    async __revokeRouteAccess(request, requestOptions) {
         const { user_id: userId, id, target_user_id: targetUserId } = request;
         const _authRequest = await this._options.authProvider.getAuthRequest();
         const _headers = mergeHeaders(_authRequest.headers, this._options?.headers, requestOptions?.headers);
         const _response = await core.fetcher({
             url: core.url.join((await core.Supplier.get(this._options.baseUrl)) ??
                 (await core.Supplier.get(this._options.environment)) ??
-                environments.MktAgiApiEnvironment.Default, `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/filters/${core.url.encodePathParam(targetUserId)}`),
+                environments.MktAgiApiEnvironment.Default, `gateway/${core.url.encodePathParam(userId)}/routes/${core.url.encodePathParam(id)}/grants/${core.url.encodePathParam(targetUserId)}`),
             method: "DELETE",
             headers: _headers,
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
@@ -443,6 +443,6 @@ export class UserRoutesClient {
                     });
             }
         }
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/gateway/{user_id}/routes/{id}/filters/{target_user_id}");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/gateway/{user_id}/routes/{id}/grants/{target_user_id}");
     }
 }

@@ -3,6 +3,6 @@
 export interface InternalFilesInternalWebUpdateFileRequest {
     /** New file name */
     name?: string | undefined;
-    /** New visibility: private|public|filter */
+    /** New visibility (domain.VisibilityPrivate|Public) */
     visibility?: string | undefined;
 }

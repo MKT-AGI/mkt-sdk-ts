@@ -4,6 +4,7 @@ import type * as MktAgiApi from "../index.js";
 
 export interface GithubComMktAgiAixInternalAigatewayInternalDomainModel {
     billing_mode?: string | undefined;
+    buyout_price?: number | undefined;
     cache_hit_price?: number | undefined;
     capabilities?: MktAgiApi.GithubComMktAgiAixInternalAigatewayInternalDomainModelCapabilities | undefined;
     created_at?: number | undefined;
@@ -21,7 +22,7 @@ export interface GithubComMktAgiAixInternalAigatewayInternalDomainModel {
     updated_at?: number | undefined;
     upstream_name?: string | undefined;
     user_id?: number | undefined;
-    /** "private" | "public" | "filter" */
+    /** "private" | "public" */
     visibility?: string | undefined;
     wallet_id?: number | undefined;
 }

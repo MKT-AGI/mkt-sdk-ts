@@ -1,8 +1,10 @@
 export interface InternalAigatewayInternalWebMarketplaceModelItem {
+    buyout_price?: number | undefined;
     currency?: string | undefined;
     description?: string | undefined;
     id?: number | undefined;
     input_price?: number | undefined;
+    is_purchased?: boolean | undefined;
     listed_at?: number | undefined;
     name?: string | undefined;
     output_price?: number | undefined;

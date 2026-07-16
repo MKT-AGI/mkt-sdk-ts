@@ -1,2 +1,2 @@
-export * from "./PostGatewayUserIdRoutesIdFiltersRequestBody.js";
+export * from "./PostGatewayUserIdRoutesIdGrantsRequestBody.js";
 export * from "./PostGatewayUserIdRoutesRequestBody.js";
